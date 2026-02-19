@@ -1,0 +1,8 @@
+# Ignore frontend directory for backend deployment
+payment-admin-dashboard/
+
+# Ignore other unnecessary files
+.DS_Store
+*.md
+.git
+.claude*
