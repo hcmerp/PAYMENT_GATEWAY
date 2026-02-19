@@ -11,9 +11,9 @@ dotenv.config();
 const app: Application = express();
 const PORT = process.env.PORT || 3000;
 
-// CORS configuration
+// CORS configuration - allow all origins for development
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: '*', // Allow all origins for development
     credentials: true,
 }));
 
