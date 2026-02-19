@@ -52,7 +52,30 @@ class ApiClient {
                 },
             });
 
-            const data = await response.json();
+            // Get response text first to debug non-JSON responses
+            const responseText = await response.text();
+
+            // Log the response for debugging
+            if (!response.ok || !responseText.startsWith('{')) {
+                console.error('API Response:', {
+                    url,
+                    status: response.status,
+                    statusText: response.statusText,
+                    body: responseText.substring(0, 500), // First 500 chars
+                });
+            }
+
+            // Parse JSON
+            let data;
+            try {
+                data = JSON.parse(responseText);
+            } catch (e) {
+                console.error('Failed to parse JSON:', responseText.substring(0, 500));
+                return {
+                    success: false,
+                    error: `Invalid JSON response: ${responseText.substring(0, 200)}`,
+                };
+            }
 
             if (!response.ok) {
                 return {
