@@ -9,6 +9,8 @@ services:
     name: auto-withdraw-backend
     env: node
     plan: free
+    # Root directory for monorepo deployment
+    rootDir: auto-withdraw-backend
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
