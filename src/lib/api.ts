@@ -1,6 +1,6 @@
 // Use ngrok URL for public access during testing
 // Change back to 'http://localhost:3001' for local development
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://unlackeyed-spireless-deangelo.ngrok-free.dev';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || ' http://172.29.27.110:3001';
 
 export interface ApiResponse<T> {
     success: boolean;
@@ -63,6 +63,7 @@ class ApiClient {
                     statusText: response.statusText,
                     body: responseText.substring(0, 500), // First 500 chars
                 });
+                console.log('API URL', API_BASE_URL)
             }
 
             // Parse JSON
