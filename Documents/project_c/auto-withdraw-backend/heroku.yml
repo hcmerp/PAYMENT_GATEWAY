@@ -1,0 +1,8 @@
+build:
+  languages:
+    - nodejs
+  config:
+    NODE_ENV: production
+    PORT: 8080
+run:
+  web: node server.js
